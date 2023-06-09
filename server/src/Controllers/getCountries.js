@@ -1,16 +1,16 @@
 const { Op } = require("sequelize")
-const { Country } = require('../db')
+const { Country, Activity } = require('../db')
 
 const getCountries = async (req, res) => {
   try {
     const { name } = req.query
     if (name) {
-      const country = await Country.findAll({ where: { name: { [Op.iLike]: `%${name}` } } })
+      const country = await Country.findAll({ where: { name: { [Op.iLike]: `%${name}` } }, include: Activity })
       country[0]
         ? res.json(country)
         : res.status(400).send(`No se encuentra ningun pais con el nombre: ${name}`)
     } else {
-      const allCountries = await Country.findAll()
+      const allCountries = await Country.findAll({ include: Activity })
       return res.json(allCountries)
     }
   } catch (error) {
