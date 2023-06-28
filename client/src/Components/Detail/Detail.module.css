@@ -1,0 +1,15 @@
+.container {
+  background-color: #fcf4d9;
+  width: fit-content;
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.data {
+  background-color: #8ed2c9;
+  padding: 5px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
